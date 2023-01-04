@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { FormGroup, FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-create-product',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent {
+  
+  form = new FormGroup({
+    title: new FormControl<string>('')
+  })
 
+  submit () {
+    console.log(this.form.value)
+  }
 }
