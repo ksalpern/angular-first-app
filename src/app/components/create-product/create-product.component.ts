@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-create-product',
@@ -7,10 +7,16 @@ import { FormGroup, FormControl } from '@angular/forms'
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent {
-  
   form = new FormGroup({
-    title: new FormControl<string>('')
+    title: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(6)
+    ])
   })
+
+  get title(){
+    return this.form.controls.title as FormControl
+  }
 
   submit () {
     console.log(this.form.value)
