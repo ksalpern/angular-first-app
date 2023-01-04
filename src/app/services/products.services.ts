@@ -17,7 +17,7 @@ export class ProductsService {
           fromObject: { limit: 5 }
         })
       })
-      .pipe(delay(2000), retry(2), catchError(this.errorHandler.bind(this)))
+      .pipe(delay(200), retry(2), catchError(this.errorHandler.bind(this)))
   }
 
   private errorHandler (error: HttpErrorResponse) {
